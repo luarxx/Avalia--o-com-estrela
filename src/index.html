@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html class="bg-gray-950" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+
+<style>
+    @import url(https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;500;600;800;900&display=swap);
+
+    body {
+        font-family: 'Overpass', sans-serif;
+        overflow: hidden;
+    }
+
+
+
+    #po {
+        background-color: hsl(213, 19%, 18%);
+        margin: 0 auto;
+        margin-top: 20vh;
+
+    }
+
+    #thanks {
+        margin: 0 auto;
+        margin: 20vh auto;
+        background-color: hsl(213, 19%, 18%);
+    }
+
+    #po figure {
+        justify-content: start !important;
+    }
+
+    #estrela {
+        border: 10px solid hsl(216, 12%, 8%);
+        border-radius: 20px;
+        background-color: hsl(216, 12%, 8%);
+        margin-top: 30px;
+        margin-left: 32px;
+    }
+
+    #stars-star {
+        margin-top: 20px;
+    }
+
+    #abrir-modal {
+        margin-top: 20px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    #modal h1 {
+        margin-top: 20px;
+    }
+
+    #modal h2 {
+        margin-top: 50px;
+        background-color: hsl(216, 12%, 8%);
+        border: 10px solid hsl(216, 12%, 8%);
+        width: 75%;
+    }
+
+    #nota {
+        margin-top: 50px;
+    }
+
+    #nota::after {
+        content: " out of 5";
+    }
+
+
+
+    .escondido {
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="po" class="card w-80 shadow-xl 2xl align-middle">
+        <figure><img id="estrela" src="../images/icon-star.svg" alt="estrela" /></figure>
+        <div class="card-body">
+            <h2 class="card-title text-white">How did we do?</h2>
+            <p>Please let us know how we did with your support request. All feedback is appreciated
+                to help us improve our offering!
+            </p>
+            <div id="stars-star" class="rating justify-center gap-8" form>
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" data-avaliacao="1" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" data-avaliacao="2" checked />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" data-avaliacao="3" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" data-avaliacao="4" />
+                <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" data-avaliacao="5" />
+            </div>
+            <div class="card-actions justify-center">
+                <button id="abrir-modal" class="btn bg-orange1 rounded-full tracking-widest		">submit</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="thanks" class="card w-80 shadow-xl 2xl ">
+
+        <div id="modal" class="card-body items-center escondido">
+            <figure><img id="smartphone" src="../images/illustration-thank-you.svg" alt="" srcset=""></figure>
+            <h2 class="rounded-full items-center text-center text-orange1">You selected <span id="nota"
+                    class="text-orange1"></span></h2>
+            <h1 class="text-2xl text-white">Thank you!</h1>
+            <p class="text-center">We appreciate you taking the time to give a rating. If you ever need more support,
+                don't hesitate to get in touch!</p>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        // Selecione o botão e a janela/modal
+        var abrirModalBtn = document.getElementById('abrir-modal'); //pega o elemento que tem o id abrir-modal
+        var modal = document.getElementById('modal'); //pega o elemento que tem o id modal
+        var novo = document.getElementById('po')
+        // Adicione um evento de escuta ao botão
+        abrirModalBtn.addEventListener('click', function () { //adiciona um evento de click ao botão
+            // Mostre a janela/modal
+            modal.classList.remove('escondido'); //remove a classe escondido do elemento que tem o id modal
+            novo.classList.add('escondido');
+            // Obtenha a nota selecionada e exiba na janela/modal
+            var nota = document.querySelector('input[name="rating-2"]:checked').getAttribute('data-avaliacao'); //pega o input que esta marcado e pega o valor do atributo data-avaliacao e atribui a variavel nota
+            var notaSpan = document.getElementById('nota'); //pega o elemento que tem o id nota
+            notaSpan.textContent = nota; //atribui o valor da variavel nota ao elemento que tem o id nota e mostra na tela em forma de texto
+            console.log(nota);
+        });
+    </script>
+</body>
+
+</html>
